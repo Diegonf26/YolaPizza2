@@ -1,0 +1,109 @@
+
+    p {
+      margin: 0px;
+    }
+
+ 
+    .gwd-div-1w1r {
+      position: absolute;
+      height: 354px;
+      width: 614px;
+      transform-origin: 307.332px 176.989px 0px;
+      left: 0px;
+      top: 0px;
+    }
+    .gwd-img-15zi {
+      position: absolute;
+      height: 361px;
+      left: 0px;
+      top: -2px;
+      width: 615px;
+      transform-origin: 306.943px 179.861px 0px;
+    }
+    .gwd-img-7tyb {
+      position: absolute;
+      width: 78px;
+      height: 62px;
+      transform-origin: 39.3646px 31.1072px 0px;
+      left: 12px;
+      top: 259px;
+      transform-style: preserve-3d;
+      transform: translate3d(0px, 0px, 0px);
+    }
+    @keyframes gwd-gen-1fv3gwdanimation_gwd-keyframes {
+      0% {
+        transform: translate3d(0px, 0px, 0px);
+        animation-timing-function: linear;
+      }
+      44% {
+        transform: translate3d(193px, -159px, 0px);
+        animation-timing-function: linear;
+      }
+      56% {
+        transform: translate3d(206px, -157px, 0px);
+        animation-timing-function: linear;
+      }
+      76% {
+        transform: translate3d(470px, -151px, 0px);
+        animation-timing-function: linear;
+      }
+      100% {
+        transform: translate3d(170px, 33px, 0px);
+        animation-timing-function: linear;
+      }
+    }
+    .htmlNoPages .gwd-gen-1fv3gwdanimation {
+      animation: gwd-gen-1fv3gwdanimation_gwd-keyframes 5s linear 0s infinite normal forwards;
+    }
+    .gwd-p-1cpe {
+      position: absolute;
+      height: 18px;
+      transform-origin: 167.323px 67.989px 0px;
+      width: 166px;
+      left: 129px;
+      top: 96px;
+      transform-style: preserve-3d;
+      transform: translate3d(-1px, 0px, 0px);
+    }
+    @keyframes gwd-empty-animation {
+      0% {
+        opacity: 0.001;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .htmlNoPages .event-1-animation {
+      animation: gwd-empty-animation 2.1s linear 0s 1 normal forwards;
+    }
+    .gwd-img-1yyx {
+      position: absolute;
+      left: -1px;
+      width: 615px;
+      height: 356px;
+      transform-origin: 307.765px 177.979px 0px;
+      top: -361px;
+      transform-style: preserve-3d;
+      transform: translate3d(568px, -44px, 0px);
+    }
+    @keyframes gwd-gen-1dv6gwdanimation_gwd-keyframes {
+      0% {
+        transform: translate3d(568px, -44px, 0px);
+        animation-timing-function: linear;
+      }
+      76% {
+        transform: translate3d(0px, -67.0513px, 0px);
+        animation-timing-function: linear;
+      }
+      76.2% {
+        transform: translate3d(0px, 361px, 0px);
+        animation-timing-function: linear;
+      }
+      100% {
+        transform: translate3d(0px, 361px, 0px);
+        animation-timing-function: linear;
+      }
+    }
+    .htmlNoPages .gwd-gen-1dv6gwdanimation {
+      animation: gwd-gen-1dv6gwdanimation_gwd-keyframes 5s linear 0s infinite normal forwards;
+    }

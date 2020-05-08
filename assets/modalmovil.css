@@ -1,0 +1,27 @@
+@media screen and (max-width:400px) {
+
+ .dt-buttons {
+ 	display: none;
+ } 
+ .movilno{
+ 	display: none;
+ }
+}
+@media screen and (min-width:300px) {
+
+}
+        .editable span{display:block;}
+        .editable span:hover {background:url(edit.png) 99% 0  no-repeat; cursor:pointer}
+        a.link   
+{   
+ text-decoration:none;   
+ border-bottom: thin dashed;
+} 
+td input{height:24px;border:1px solid #ddd;padding:0 5px;margin:0;border-radius:6px;vertical-align:middle}
+        a.enlace{display:inline-block;width:24px;height:24px;margin:0 0 0 5px;overflow:hidden;text-indent:-999em;vertical-align:middle}
+            .guardar{background:url(save.png) 0 0 no-repeat}
+            .cancelar{background:url(cancel.png) 0 0 no-repeat}
+    
+    .mensaje{display:block;text-align:center;margin:0 0 20px 0}
+        .ok{display:block;padding:10px;text-align:center;background:green;color:#fff}
+        .ko{display:block;padding:10px;text-align:center;background:red;color:#fff}
