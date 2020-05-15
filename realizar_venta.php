@@ -1311,18 +1311,34 @@
     var aux=0;            //Auxiliar q permite determinar si se debe cargar los datos a la  BD o no
     var efect=document.getElementById('in_efectivo').value;
     var total=document.getElementById('total_compra').value;
+    var totalRecibo;
     
     if(conti==1){
-      if(pagoTotal==1){
+      if(document.getElementId('optionsRadios1').checked){   //Pago en ejectivo
+        totalRecibo=document.getElementById('total_compra').value;
+        p_pago="efectivo";
         if(Number(efect)>=Number(total)){
           p_pago="efectivo";
         }
         else{
-          alert("Valor de efectivo incorrecto");
+          alert("Valor de efectivo incorrecto");    //El ingreso de dinero es insuficiente
           aux=1;
         }
       }
-      else p_pago="tarjeta";
+      else if(document.getElementId('optionsRadios2').checked){   //Pago en tarjeta
+        totalRecibo=document.getElementById('total_tarjeta').value;
+        p_pago="tarjeta";
+
+      }
+      else if(document.getElementId('optionsRadios3').checked){   //Pago en domicilio
+        totalRecibo=document.getElementById('total_domicilio').value;
+        p_pago="domicilio";
+      }
+      else if(document.getElementId('optionsRadios4').checked){   //Pago en uber
+        totalRecibo=document.getElementById('total_uber').value;
+        p_pago="uber";
+      }
+    
 
       var user = "<?php echo $user['username']; ?>";        //Determinar el usuario que ejecuta la venta
 
