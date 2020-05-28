@@ -486,14 +486,31 @@
                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2" onclick="forma_pago('tarjeta');">
                 Tarjeta
               </label>
-              <label class="form-check-label" style="margin-right: 5%;">
+              <!-- <label class="form-check-label" style="margin-right: 5%;">
                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" onclick="forma_pago('domicilio');">
-                Domicilio
-              </label>
+               Domicilio
+              </label>-->
               <label class="form-check-label" style="margin-right: 5%;">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option4" onclick="forma_pago('uber');">
+                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4" onclick="forma_pago('uber');">
                 Uber
               </label>
+            </div>
+          </div>
+          <!-- Tabla seleccion DOMICILIO -->
+          <div class="panel panel-info" id="panel_domi" style="display: ; margin-left: 3em;">
+            <div class="panel-heading" id="panel_header_domi" style="display: ;">
+              <strong>
+                <input type="checkbox" id="chk_domicilio" name="chk_domicilio" onclick="func_domicilio()">
+                <label> DOMICILIO</label>
+                <span class="glyphicon glyphicon-hand-left"  style="float:right;"></span>
+              </strong>
+            </div>
+            <div class="panel-body" id="panel_body_domi"  style="display: none;">  
+              <table class="table table-striped table-hover table-condensed">
+                <tbody> 
+                  <tr><td class="text-right"> Valor Domicilio</td><td class="text-center">$ <input id="in_domicilio" class="text-center"  type="number" value="0.00" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 30%;" onchange="actu_domicilio()"></td></tr>
+                </tbody>
+              </table>     
             </div>
           </div>
           <!-- Imagen de tarjeta -->
@@ -503,7 +520,7 @@
               <tbody> 
                 <tr><td class="text-right">Subtotal</td><td class="text-center">$ <input readonly id="sub_tarjeta" class="text-center" type="number" value="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" style="width: 25%;" disabled></td></tr>
                 <tr><td class="text-right" style="color: #00AEEF;">Cargo Adicional </td><td class="text-center" style="color: #1C5DB3;">$ <input id="cargo_tarjeta" class="text-center"  type="number" step="0.01" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0"  onchange="actu_tarjeta()" style="width: 25%; background-color: #A1C0E8;"></td></tr>
-                <tr><td class="text-right">TOTAL</td><td class="text-center">$ <input readonly id="total_tarjeta" class="text-center"  type="number" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 30%;" disabled></td></tr>
+                <tr><td class="text-right" >TOTAL</td><td class="text-center">$ <input readonly id="total_tarjeta" class="text-center"  type="number" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 30%;" disabled></td></tr>
               </tbody>
             </table>
           </div>
@@ -511,19 +528,10 @@
           <div class="panel-body" id="tabla_vuelto">
             <table class="table table-striped table-hover table-condensed">
               <tbody> 
+                <tr><td class="text-right" style="color:#0099ff; text-align:center; font-weight:bold; ">TOTAL</td><td class="text-center">$ <input id="total_efectivo" class="text-center"  type="number" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 25%; background-color: #81BEF7;" disabled></td></tr>
                 <tr><td class="text-right">Efectivo</td><td class="text-center">$ <input id="in_efectivo" class="text-center" type="number" value="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" style="width: 25%;" onkeyup="actu_vuelto()"></td></tr>
                 <tr><td class="text-right">Vuelto</td><td class="text-center">$ <input id="in_vuelto" class="text-center"  type="number" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 25%;" disabled></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- Tabla de domicilio -->
-          <img class="card-img-top img-responsive pb-2" id="im_domicilio" src="uploads/products/logoDomicilio.png" alt="" style="width: 30%; margin:auto; display: none;">
-          <div class="panel-body" id="tabla_domicilio" style="display: none;">
-            <table class="table table-striped table-hover table-condensed">
-              <tbody> 
-                <tr><td class="text-right">Subtotal</td><td class="text-center">$ <input id="sub_domicilio" class="text-center" type="number" value="0.00" min="0" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" style="width: 25%;" disabled></td></tr>
-                <tr><td class="text-right">Domicilio</td><td class="text-center">$ <input id="in_domicilio" class="text-center"  type="number" value="0.00" step="0.01" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 25%;" onchange="actu_domicilio()"></td></tr>
-                <tr><td class="text-right">TOTAL</td><td class="text-center">$ <input id="total_domicilio" class="text-center"  type="number" value="0.00" pattern="^\d+(?:\.\d{1,2})?$" min="0" style="width: 25%;" disabled></td></tr>
+              
               </tbody>
             </table>
           </div>
@@ -1054,6 +1062,9 @@
       location.reload();
     }
     else{
+      var total = document.getElementById('total_compra').value;
+      document.getElementById('total_efectivo').value=parseFloat(total).toFixed(2);
+
       document.getElementById('cont_vuelto').style.display='block';
     }
   }
@@ -1088,67 +1099,57 @@
     var total = document.getElementById('total_compra').value;
     //Tablas
     tabla_vuelto=document.getElementById('tabla_vuelto');
-    tabla_domicilio=document.getElementById('tabla_domicilio');
     tabla_uber=document.getElementById('tabla_uber');
     tabla_tarjeta=document.getElementById('tabla_tarjeta');
     //Imagenes
     im_tarjeta=document.getElementById('im_tarjeta');
-    im_domicilio=document.getElementById('im_domicilio');
     im_uber=document.getElementById('im_uber');
+    //Tabla domicilio
+    panel_domi=document.getElementById('panel_domi');
 
     if (forma=="efectivo") {
       tabla_vuelto.style.display='block';
-      tabla_domicilio.style.display='none';
       tabla_uber.style.display='none';
       tabla_tarjeta.style.display='none';
       //-----------------------------
       im_tarjeta.style.display='none';
-      im_domicilio.style.display='none';
       im_uber.style.display='none';
       //---------------------------------
+      panel_domi.style.display='block';
+
       pagoTotal=1;    //Bandera de pago en efectivo
+      document.getElementById('total_efectivo').value=parseFloat(total).toFixed(2);
     }
     else if (forma=="tarjeta"){
       tabla_vuelto.style.display='none';
-      tabla_domicilio.style.display='none';
       tabla_uber.style.display='none';
       tabla_tarjeta.style.display='block';
       //-----------------------------
       centrar(im_tarjeta);
-      im_domicilio.style.display='none';
       im_uber.style.display='none';
       //---------------------------------
+      panel_domi.style.display='block';
+
       pagoTotal=0;    //Bandera de pago en tarjeta
       document.getElementById('sub_tarjeta').value=parseFloat(total).toFixed(2);
     }
-    else if(forma=="domicilio"){
-      tabla_vuelto.style.display='none';
-      tabla_domicilio.style.display='block';
-      tabla_uber.style.display='none';
-      tabla_tarjeta.style.display='none';
-      //-----------------------------
-      im_tarjeta.style.display='none';
-      centrar(im_domicilio);
-      im_uber.style.display='none';
-      //---------------------------------
-      pagoTotal=3;    //Bandera de pago Domicilio
-      //Colocar total de venta
-      document.getElementById('sub_domicilio').value=parseFloat(total).toFixed(2);
-    }
     else if(forma=="uber") {
       tabla_vuelto.style.display='none';
-      tabla_domicilio.style.display='none';
       tabla_uber.style.display='block';
       tabla_tarjeta.style.display='none';
       //-----------------------------
       im_tarjeta.style.display='none';
-      im_domicilio.style.display='none';
       centrar(im_uber);
       //---------------------------------
+      panel_domi.style.display='none';
+      document.getElementById('chk_domicilio').checked=false;
+      resetear_domi();
+
       pagoTotal=4;    //Bandera de pago Uber
       //Colocar total de venta
       document.getElementById('sub_uber').value=parseFloat(total).toFixed(2);
     }
+    actu_domicilio();
   }
 
   //---------------------------------------------------------------------------
@@ -1314,7 +1315,7 @@
     var totalRecibo;
     
     if(conti==1){
-      if(document.getElementId('optionsRadios1').checked){   //Pago en ejectivo
+      if(document.getElementById('optionsRadios1').checked){   //Pago en efectivo
         totalRecibo=document.getElementById('total_compra').value;
         p_pago="efectivo";
         if(Number(efect)>=Number(total)){
@@ -1521,11 +1522,19 @@
   }
 
   function actu_domicilio(){ //Calculo Domicilio
-    var totalDom = document.getElementById('sub_domicilio').value;
     var domicilio = document.getElementById('in_domicilio').value;
+    var total_compra = document.getElementById('total_compra').value;
 
-    //document.getElementById('in_subtotal').value=total;
-    document.getElementById('total_domicilio').value=(parseFloat(totalDom)+parseFloat(domicilio)).toFixed(2);
+    if(document.getElementById('optionsRadios1').checked){   //Pago en efectivo
+      document.getElementById('total_efectivo').value=(parseFloat(total_compra)+parseFloat(domicilio)).toFixed(2);
+    }
+    else if(document.getElementById('optionsRadios2').checked){//Tarjeta
+      document.getElementById('sub_tarjeta').value=(parseFloat(total_compra)+parseFloat(domicilio)).toFixed(2);
+    }
+    else if(document.getElementById('optionsRadios4').checked){ //Uber
+      document.getElementById('in_domicilio').value=(0).toFixed(2);   //Resetear el valor de domicilio
+    }
+
     //Mantener 2 decimales
     document.getElementById('in_domicilio').value=parseFloat(domicilio).toFixed(2);
   }
@@ -1538,6 +1547,22 @@
     //document.getElementById('total_domicilio').value=(parseFloat(totalDom)+parseFloat(domicilio)).toFixed(2);
     //Mantener 2 decimales
     document.getElementById('total_uber').value=parseFloat(total_uber).toFixed(2);
+  }
+  
+  function func_domicilio(){
+
+    if (document.getElementById('chk_domicilio').checked) {
+      document.getElementById('panel_body_domi').style.display='block';
+    }
+    else {
+      resetear_domi();
+      actu_domicilio();
+    }
+  }
+
+  function resetear_domi(){
+    document.getElementById('panel_body_domi').style.display='none';
+    document.getElementById('in_domicilio').value=(0).toFixed(2);
   }
 
 </script>
